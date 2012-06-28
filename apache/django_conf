@@ -1,0 +1,22 @@
+    WSGIDaemonProcess galyn python-path=<VIRTUALENV PATH>/lib/python2.7/site-packages:<DJANGO PROJECT PATH> user=<USER TO RUN AS> threads=10 maximum-requests=1000 inactivity-timeout=300
+
+    WSGIScriptAlias /<WEB SUBDIRECTORY> /<PATH TO WSGI FILE>
+    <Location /<WEB SUBDIRECTORY>
+      WSGIProcessGroup <GROUP TO RUN AS>
+      Allow from all
+    </Location>
+
+    Alias /<WEB SUBDIRECTORY>/<STATIC FILES DIRECTORY>/ /<PATH TO PROJECT STATIC FILES>/
+    <Directory /h<PATH TO PROJECT STATIC FILES>/>
+      Order allow,deny
+      Allow from all
+    </Directory>
+
+    Alias /<WEB SUBDIRECTORY>/<FILE UPLOAD DIRECTORY>/ /<FILE UPLOAD PATH>/
+    <Directory /<FILE UPLOAD PATH>/>
+      Order allow,deny
+      Allow from all
+    </Directory>
+
+    RewriteEngine on
+    RewriteRule ^/<WEB SUBDIRECTORY>$ <WEB SUBDIRECTORY>/  [L,R]
