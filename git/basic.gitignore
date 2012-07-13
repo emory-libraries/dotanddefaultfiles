@@ -26,6 +26,8 @@ Icon?
 ehthumbs.db
 .idea # Pycharm config files
 collectedmedia
+localsettings.py
+local_settings.py
 
 # Directories to Ignore #
 #########################
